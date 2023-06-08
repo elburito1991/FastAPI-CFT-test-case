@@ -1,0 +1,26 @@
+[
+    {
+        "login": "admin",
+        "hashed_password": "$2b$12$CjqXd2pPPsUvnQtHDlVeD.Q717Lx9yhfht8JZF.qBhebCx/IEYmCy",
+        "first_name": "Иван",
+        "last_name": "Иванов",
+        "middle_name": "Иванович",
+        "su": true
+    },
+    {
+        "login": "employee",
+        "hashed_password": "$2b$12$U9eJltFEMBr073hxCSpXaOwZHNZb/t5m6Dazr1ltE9Rb9.vwOfHhi",
+        "first_name": "Сергей",
+        "last_name": "Сергеев",
+        "middle_name": "Сергеевич",
+        "su": false
+    },
+    {
+        "login": "employee1",
+        "hashed_password": "$2b$12$O38IotgeJLBpJQwJMbUfDOze1jv4wsH9en5gokldL3Wc/Bl7hEWGW",
+        "first_name": "Дмитрий",
+        "last_name": "Дмитриеев",
+        "middle_name": "Дмитриевич",
+        "su": false
+    }
+]
