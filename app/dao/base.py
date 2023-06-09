@@ -23,9 +23,10 @@ class BaseDAO:
     @classmethod
     async def add(cls, **data):
         async with async_session_maker() as session:
-            query = insert(cls.model).values(**data)
-            await session.execute(query)
+            query = insert(cls.model).values(**data).returning(cls.model)
+            result = await session.execute(query)
             await session.commit()
+        return result.scalar()
 
     @classmethod
     async def update_payroll(cls, user_id: int, **data):
@@ -33,7 +34,8 @@ class BaseDAO:
             payroll_query = (
                 update(cls.model).
                 where(cls.model.user_id == user_id).
-                values(**data)
+                values(**data).returning(cls.model)
             )
-        await session.execute(payroll_query)
-        await session.commit()
+            result = await session.execute(payroll_query)
+            await session.commit()
+        return result.scalar()

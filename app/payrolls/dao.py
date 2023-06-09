@@ -59,13 +59,13 @@ class PayRollsDAO(BaseDAO):
                 await session.commit()
 
             payroll_query = (
-                select(PayRolls.salary)
+                select(PayRolls.__table__.columns)
                 .select_from(PayRolls)
                 .where(PayRolls.user_id == user_id)
             )
 
-            result: int = (await session.execute(payroll_query)).scalar()
-            return result
+            result = await session.execute(payroll_query)
+            return result.mappings().one_or_none()
 
 
 class NextPayRollsDAO(BaseDAO):

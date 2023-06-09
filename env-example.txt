@@ -1,25 +1,24 @@
-MODE=DEV
+*В примере ниже проставлены дефолтные параметры для информативности*
 
-DB_HOST=
-DB_PORT=
-DB_USER=
-DB_PASS=
-DB_NAME=
+MODE=DEV # Оставить как есть
 
-TEST_DB_HOST=
-TEST_DB_PORT=
-TEST_DB_USER=
-TEST_DB_PASS=
-TEST_DB_NAME=
+*Рабочая БД*
+DB_HOST=localhost
+DB_PORT=5433
+DB_USER=postgres
+DB_PASS=postgres
+DB_NAME=<имя вашей бд без ковычек>
 
-'''
-Вариант создания случайного секретного ключа на Windows(алгоритм HS256):
-from secrets import token_bytes
-from base64 import b64encode
+*Тестовая БД*
+TEST_DB_HOST=localhost
+TEST_DB_PORT=5433
+TEST_DB_USER=postgres
+TEST_DB_PASS=postgres
+TEST_DB_NAME=<имя вашей бд для тестов без ковычек>
 
-print(b64encode(token_bytes(32)).decode())
-'''
 
-SECRET_KEY=
-ALGORITHM=
+*Пример генерации ключа расположен в корне проекта в файле secret_key.py*
+
+SECRET_KEY=<Секретный ключ без ковычек>
+ALGORITHM=<алгоритм шифрования, если воспользовались предложенным примером генерации выставьте - HS256>
 
