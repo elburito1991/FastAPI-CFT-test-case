@@ -283,3 +283,4 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 .idea
+.env-non-dev
