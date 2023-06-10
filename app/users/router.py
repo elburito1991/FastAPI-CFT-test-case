@@ -1,11 +1,14 @@
 from fastapi import APIRouter, Depends, Response
 from fastapi.encoders import jsonable_encoder
-from app.users.exeptions import IncorrectEmailOrPasswordException, UserAlreadyExistsException
-from app.users.auth import authenticate_user, create_access_token, get_password_hash
+
+from app.users.auth import (authenticate_user, create_access_token,
+                            get_password_hash)
 from app.users.dao import UsersDAO
 from app.users.dependencies import get_current_user
+from app.users.exeptions import (IncorrectEmailOrPasswordException,
+                                 UserAlreadyExistsException)
 from app.users.models import Users
-from app.users.shemas import SUserAuth, SUserReg, SNewUser, SUserLogin, SUserMe
+from app.users.shemas import SNewUser, SUserAuth, SUserLogin, SUserMe, SUserReg
 
 router = APIRouter(
     prefix="/auth",

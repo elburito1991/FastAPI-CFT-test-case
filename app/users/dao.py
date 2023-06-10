@@ -2,8 +2,8 @@ from sqlalchemy import delete
 
 from app.dao.base import BaseDAO
 from app.database import async_session_maker
-from app.payrolls.dao import PayRollsDAO, NextPayRollsDAO
-from app.payrolls.models import PayRolls, NextPayRolls
+from app.payrolls.dao import NextPayRollsDAO, PayRollsDAO
+from app.payrolls.models import NextPayRolls, PayRolls
 from app.users.models import Users
 
 

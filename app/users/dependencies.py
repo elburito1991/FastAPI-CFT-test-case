@@ -4,13 +4,10 @@ from fastapi import Depends, Request
 from jose import JWTError, jwt
 
 from app.config import settings
-from app.users.exeptions import (
-    IncorrectTokenFormatException,
-    TokenAbsentException,
-    TokenExpiredException,
-    UserIsNotPresentException,
-)
 from app.users.dao import UsersDAO
+from app.users.exeptions import (IncorrectTokenFormatException,
+                                 TokenAbsentException, TokenExpiredException,
+                                 UserIsNotPresentException)
 
 
 def get_token(request: Request):

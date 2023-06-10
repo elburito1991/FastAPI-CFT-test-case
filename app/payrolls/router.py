@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from app.payrolls.dao import PayRollsDAO, NextPayRollsDAO
+from app.payrolls.dao import NextPayRollsDAO, PayRollsDAO
 from app.payrolls.exeptions import PayRollIsNotPresentException
 from app.users.dependencies import get_current_user
 from app.users.exeptions import UserForbiddenException

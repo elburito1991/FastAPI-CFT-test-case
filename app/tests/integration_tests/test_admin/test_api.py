@@ -1,4 +1,4 @@
-from app.payrolls.dao import PayRollsDAO, NextPayRollsDAO
+from app.payrolls.dao import NextPayRollsDAO, PayRollsDAO
 from app.users.dao import UsersDAO
 
 

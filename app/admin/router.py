@@ -1,10 +1,11 @@
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends
 from fastapi.encoders import jsonable_encoder
 
-from app.admin.exeptions import PayrollAlreadyExistsException, PayrollNotExistsException
-from app.payrolls.dao import PayRollsDAO, NextPayRollsDAO
+from app.admin.exeptions import (PayrollAlreadyExistsException,
+                                 PayrollNotExistsException)
+from app.payrolls.dao import NextPayRollsDAO, PayRollsDAO
 from app.payrolls.shemas import SNewPayroll
 from app.users.dao import UsersDAO
 from app.users.dependencies import get_current_user

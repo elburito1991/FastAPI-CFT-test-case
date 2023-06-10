@@ -5,7 +5,7 @@ from sqlalchemy import select, update
 from app.dao.base import BaseDAO
 from app.database import async_session_maker
 from app.payrolls.exeptions import PayRollIsNotPresentException
-from app.payrolls.models import PayRolls, NextPayRolls
+from app.payrolls.models import NextPayRolls, PayRolls
 
 
 class PayRollsDAO(BaseDAO):
