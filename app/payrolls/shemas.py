@@ -8,4 +8,3 @@ class SNewPayroll(BaseModel):
     user_id: int
     salary: int
     start_date: date
-

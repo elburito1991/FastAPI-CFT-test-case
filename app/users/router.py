@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Depends, Response, Cookie
+from fastapi import APIRouter, Depends, Response
 from fastapi.encoders import jsonable_encoder
-from app.users.exeptions import IncorrectEmailOrPasswordException, UserAlreadyExistsException, TokenAbsentException
+from app.users.exeptions import IncorrectEmailOrPasswordException, UserAlreadyExistsException
 from app.users.auth import authenticate_user, create_access_token, get_password_hash
 from app.users.dao import UsersDAO
 from app.users.dependencies import get_current_user
@@ -14,7 +14,7 @@ router = APIRouter(
 
 
 @router.post("/register", status_code=200, response_model=SNewUser, description="Создать учетную запись")
-async def register_user(user_data: SUserReg):
+async def register_user(response: Response, user_data: SUserReg):
     existing_login = await UsersDAO.find_one_or_none(login=user_data.login)
     if existing_login:
         raise UserAlreadyExistsException
@@ -29,6 +29,9 @@ async def register_user(user_data: SUserReg):
         middle_name=user_data.middle_name,
         su=is_su
     )
+    access_token = create_access_token({"sub": str(result.id)})
+    response.set_cookie("access_token", access_token, httponly=True)
+
     return jsonable_encoder(result)
 
 
@@ -53,4 +56,3 @@ def logout_user(response: Response, current_user: Users = Depends(get_current_us
 @router.get("/me", response_model=SUserMe, description="Текущие данные учетной записи")
 async def read_users_me(current_user: Users = Depends(get_current_user)):
     return current_user
-

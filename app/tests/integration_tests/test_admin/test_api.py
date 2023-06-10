@@ -17,7 +17,7 @@ async def test_admin_tools(authenticated_admin_ac, authenticated_user_ac):
     new_next_payroll = await NextPayRollsDAO.find_one_or_none(user_id=2)
     assert new_payroll and new_next_payroll
 
-    await authenticated_admin_ac.post("/admin/update_payroll", params={
+    await authenticated_admin_ac.put("/admin/update_payroll", params={
         "user_id": 2,
         "salary": 15000
     })

@@ -1,18 +1,14 @@
 import asyncio
-import pytest
 import json
 
+import pytest
+from httpx import AsyncClient
 from sqlalchemy import insert
 
 from app.config import settings
 from app.database import Base, async_session_maker, engine
-from app.users.dao import UsersDAO
-from app.users.models import Users
-from app.payrolls.models import PayRolls, NextPayRolls
-
-from fastapi.testclient import TestClient
-from httpx import AsyncClient
 from app.main import app as fastapi_app
+from app.users.models import Users
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -69,5 +65,3 @@ async def authenticated_admin_ac():
         })
         assert ac.cookies["access_token"]
         yield ac
-
-
